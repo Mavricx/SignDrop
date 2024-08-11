@@ -40,10 +40,34 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
 #clear {
   background-color: rgb(212, 62, 11);
 }
 
 #download {
-  background-color: rgb(72, 209, 13);
+  background-color: rgb(45, 140, 5);
+}
+
+#clear:hover {
+  background-color: rgb(192, 2, 2);
+}
+
+#download:hover {
+  background-color: rgb(60, 188, 5);
+}
+#scale{
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+  margin-top: 3vh;
+  background-color: rgb(31, 30, 30);
+}
+.color{
+  justify-content: space-between;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid aliceblue;
 }

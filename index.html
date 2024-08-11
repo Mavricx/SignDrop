@@ -8,12 +8,24 @@
   </head>
   <body>
     <div class="tools">
-      <div class="colors">Select Ink Color</div>
-      <div class="tipSize">Select Pen Tip Size</div>
+      <div class="colors">
+        <div id="text">Select Ink Color</div>
+        <div id="scale">
+          <div class="color" style="background-color: #810202"></div>
+          <div class="color" style="background-color: #070707"></div>
+          <div class="color" style="background-color: #05157c"></div>  
+          <div class="color" style="background-color: #2704c2"></div>      
+          <div class="color" style="background-color: #015804"></div>
+        </div>
+      </div>
+      <div class="tipSize">
+        <div id="text">Select Pen Tip Size</div>
+        <div id="tipScale"></div>
+      </div>
     </div>
     <canvas class="canvas"></canvas>
     <div class="actions">
-      <button class="fa-solid fa-trash" id="clear">🗑️ Clear</button>
+      <button id="clear">🗑️ Clear</button>
       <button id="download">⬇️ Download</button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
