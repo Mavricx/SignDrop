@@ -1,6 +1,24 @@
+const panel = document.getElementById('scale').children;
+const tips = document.querySelectorAll('#point');
+console.log(tips[3].className[3]);
+
+for (let i = 0; i < panel.length; i++) {
+    panel[i].addEventListener('click', () => {
+
+        brush = panel[i].style.backgroundColor;
+        tips.forEach((tip) => { tip.style.backgroundColor = brush });
+    })
+}
+
+tips.forEach(function (tip) {
+    tip.addEventListener('click', function () {
+        size = parseInt(this.className[3]);
+        console.log(size);
+    })
+});
+
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
-
 
 function resizeCanvas() {
     const imageDate = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -17,11 +35,28 @@ window.addEventListener('resize', resizeCanvas);
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let brush = "black";
+let size = 3;
 
 canvas.addEventListener('mousedown', function (e) {
     isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    // Adjust the mouse coordinates
+    const offsetX = (e.clientX - rect.left) * scaleX;
+    const offsetY = (e.clientY - rect.top) * scaleY;
+
+    // Start a new path and move to the starting position
+    ctx.beginPath();
+    ctx.moveTo(offsetX, offsetY);
+
+    // Set lastX and lastY to the starting position
+    [lastX, lastY] = [offsetX, offsetY];
 });
+
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
 
@@ -32,22 +67,19 @@ canvas.addEventListener('mousemove', (e) => {
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
 
+    // Adjust the mouse coordinates
     const offsetX = (e.clientX - rect.left) * scaleX;
     const offsetY = (e.clientY - rect.top) * scaleY;
 
-
-
-    ctx.stokeStyle = "#010101";
+    ctx.strokeStyle = brush;  // Corrected typo here
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = size;
 
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.lineTo(offsetX, offsetY);  // Draw a line to the new position
     ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
 
+    [lastX, lastY] = [offsetX, offsetY];  // Update lastX, lastY with adjusted coordinates
 });
 
 document.getElementById('clear').addEventListener('click', () => {
@@ -58,9 +90,7 @@ document.getElementById('download').addEventListener('click', () => {
     canvas.toBlob((blob) => {
         saveAs(blob, "signature.png");
     });
-})
-
-
+});
 
 
 

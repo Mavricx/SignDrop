@@ -11,18 +11,34 @@
       <div class="colors">
         <div id="text">Select Ink Color</div>
         <div id="scale">
-          <div class="color" style="background-color: #810202"></div>
-          <div class="color" style="background-color: #070707"></div>
-          <div class="color" style="background-color: #05157c"></div>  
-          <div class="color" style="background-color: #2704c2"></div>      
-          <div class="color" style="background-color: #015804"></div>
+          <div class="color" id="red" style="background-color: #810202"></div>
+          <div class="color" id="black" style="background-color: #070707"></div>
+          <div
+            class="color"
+            id="darkBlue"
+            style="background-color: #05157c"
+          ></div>
+          <div
+            class="color"
+            id="lightBlue"
+            style="background-color: #2704c2"
+          ></div>
+          <div class="color" id="green" style="background-color: #015804"></div>
         </div>
       </div>
       <div class="tipSize">
         <div id="text">Select Pen Tip Size</div>
-        <div id="tipScale"></div>
+        <div id="tipScale">
+          <div class="tip1px" id="point" title="1px Tip"></div>
+          <div class="tip2px" id="point" title="2px Tip"></div>
+          <div class="tip3px" id="point" title="3px Tip"></div>
+          <div class="tip4px" id="point" title="4px Tip"></div>
+          <div class="tip5px" id="point" title="5px Tip"></div>
+          <div class="tip6px" id="point" title="6px Tip"></div>
+        </div>
       </div>
     </div>
+    <h2>Leave Your Mark Here</h2>
     <canvas class="canvas"></canvas>
     <div class="actions">
       <button id="clear">🗑️ Clear</button>

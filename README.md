@@ -22,6 +22,10 @@
 - **Canvas API**: Used to create and manage the whiteboard drawing functionality, and to convert the drawn content into an image format (PNG) that users can download.
 
 
+## Security and Privacy Notice
+
+- This application is designed with your privacy and security in mind. **There is no backend involved in storing your signature** . The signatures you create are not stored on any server or sent over the internet. **The only place where your signature is stored is on your own device when you choose to download it**. This ensures that your signature remains safe and private.
+
 ---
 
 This project is ideal for anyone needing a quick and easy way to generate digital signatures without the need for complex software or installations. Contributions and improvements are welcome!

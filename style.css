@@ -12,8 +12,8 @@ body {
   display: flex;
   justify-content: space-between;
   width: 75vw;
-  text-decoration: dashed;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .canvas {
@@ -24,7 +24,6 @@ body {
   width: 80vw;
   background-color: white;
   border-radius: 10px;
-  margin-top: 5vh;
   margin-bottom: 5vh;
 }
 
@@ -56,18 +55,65 @@ button {
 #download:hover {
   background-color: rgb(60, 188, 5);
 }
-#scale{
+#scale {
   display: flex;
   justify-content: space-between;
-  width: 230px;
-  margin-top: 3vh;
+  width: 250px;
+  margin-top: 2vh;
   background-color: rgb(31, 30, 30);
 }
-.color{
+
+.color {
   justify-content: space-between;
   height: 40px;
   width: 40px;
   border-radius: 20px;
   cursor: pointer;
   border: 2px solid aliceblue;
+}
+
+#tipScale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  margin-top: 2vh;
+  background-color: rgb(31, 30, 30);
+}
+#point {
+  justify-content: space-around;
+  background-color: black;
+  cursor: pointer;
+  border: 2px solid aliceblue;
+}
+
+.tip1px {
+  height: 8px;
+  width: 8px;
+  border-radius: 5px;
+}
+.tip2px {
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+.tip3px {
+  height: 13px;
+  width: 13px;
+  border-radius: 8px;
+}
+.tip4px {
+  height: 15px;
+  width: 15px;
+  border-radius: 8px;
+}
+.tip5px {
+  height: 18px;
+  width: 18px;
+  border-radius: 10px;
+}
+.tip6px {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
 }
