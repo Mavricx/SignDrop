@@ -1,0 +1,49 @@
+body {
+  background-color: rgb(31, 30, 30);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10vh;
+  color: white;
+}
+.tools {
+  display: flex;
+  justify-content: space-between;
+  width: 75vw;
+  text-decoration: dashed;
+  font-weight: bold;
+}
+
+.canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 80vw;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 75vw;
+}
+button {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#clear {
+  background-color: rgb(212, 62, 11);
+}
+
+#download {
+  background-color: rgb(72, 209, 13);
+}
