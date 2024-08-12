@@ -1,3 +1,5 @@
+let brush = "black";
+let size = 3;
 const panel = document.getElementById('scale').children;
 const tips = document.querySelectorAll('#point');
 console.log(tips[3].className[3]);
@@ -35,52 +37,69 @@ window.addEventListener('resize', resizeCanvas);
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
-let brush = "black";
-let size = 3;
 
-canvas.addEventListener('mousedown', function (e) {
+function startDrawing(x, y) {
     isDrawing = true;
-
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-
-    // Adjust the mouse coordinates
-    const offsetX = (e.clientX - rect.left) * scaleX;
-    const offsetY = (e.clientY - rect.top) * scaleY;
-
-    // Start a new path and move to the starting position
     ctx.beginPath();
-    ctx.moveTo(offsetX, offsetY);
+    ctx.moveTo(x, y);
+    [lastX, lastY] = [x, y];
+}
 
-    // Set lastX and lastY to the starting position
-    [lastX, lastY] = [offsetX, offsetY];
-});
-
-canvas.addEventListener('mouseup', () => isDrawing = false);
-canvas.addEventListener('mouseout', () => isDrawing = false);
-
-canvas.addEventListener('mousemove', (e) => {
+function draw(x, y) {
     if (!isDrawing) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-
-    // Adjust the mouse coordinates
-    const offsetX = (e.clientX - rect.left) * scaleX;
-    const offsetY = (e.clientY - rect.top) * scaleY;
-
-    ctx.strokeStyle = brush;  // Corrected typo here
+    ctx.strokeStyle = brush;
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
     ctx.lineWidth = size;
 
-    ctx.lineTo(offsetX, offsetY);  // Draw a line to the new position
+    ctx.lineTo(x, y);
     ctx.stroke();
 
-    [lastX, lastY] = [offsetX, offsetY];  // Update lastX, lastY with adjusted coordinates
+    [lastX, lastY] = [x, y];
+}
+
+function endDrawing() {
+    isDrawing = false;
+}
+
+canvas.addEventListener('mousedown', function (e) {
+    const rect = canvas.getBoundingClientRect();
+    const offsetX = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const offsetY = (e.clientY - rect.top) * (canvas.height / rect.height);
+    startDrawing(offsetX, offsetY);
 });
+
+canvas.addEventListener('mousemove', function (e) {
+    const rect = canvas.getBoundingClientRect();
+    const offsetX = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const offsetY = (e.clientY - rect.top) * (canvas.height / rect.height);
+    draw(offsetX, offsetY);
+});
+
+canvas.addEventListener('mouseup', endDrawing);
+canvas.addEventListener('mouseout', endDrawing);
+
+// Touch events for touchscreens
+canvas.addEventListener('touchstart', function (e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const offsetX = (touch.clientX - rect.left) * (canvas.width / rect.width);
+    const offsetY = (touch.clientY - rect.top) * (canvas.height / rect.height);
+    startDrawing(offsetX, offsetY);
+});
+
+canvas.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const offsetX = (touch.clientX - rect.left) * (canvas.width / rect.width);
+    const offsetY = (touch.clientY - rect.top) * (canvas.height / rect.height);
+    draw(offsetX, offsetY);
+});
+
+canvas.addEventListener('touchend', endDrawing);
 
 document.getElementById('clear').addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -91,6 +110,7 @@ document.getElementById('download').addEventListener('click', () => {
         saveAs(blob, "signature.png");
     });
 });
+
 
 
 
