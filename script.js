@@ -129,3 +129,6 @@ document.getElementById('download').addEventListener('click', () => {
 // ctx.closePath();//this means stop drawing
 // ctx.clearRect(0, 0, canvas.width, canvas.height);//this means clear the canvas
 // ctx.fillRect(x, y, width, height);//this means draw a rectangle
+// ctx.getImageData(0, 0, canvas.width, canvas.height);//this means get the image data of the canvas
+// canvas.getBoundingClientRect();//this means get the size of the canvas
+// ctx.putImageData(imageData, 0, 0);//this means put the image data back to the canvas

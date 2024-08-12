@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 10vh;
+  margin-top: 5vh;
   color: white;
 }
 .tools {
@@ -13,7 +13,7 @@ body {
   justify-content: space-between;
   width: 75vw;
   font-weight: bold;
-  text-decoration: underline;
+  flex-wrap: wrap;
 }
 
 .canvas {
@@ -21,7 +21,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 60vh;
-  width: 80vw;
+  width: 88vw;
   background-color: white;
   border-radius: 10px;
   margin-bottom: 5vh;
@@ -61,6 +61,7 @@ button {
   width: 250px;
   margin-top: 2vh;
   background-color: rgb(31, 30, 30);
+  margin-bottom: 2vh;
 }
 
 .color {
@@ -116,4 +117,16 @@ button {
   height: 20px;
   width: 20px;
   border-radius: 10px;
+}
+footer{
+  margin-top: 5vh;
+  display: flex;
+  text-align: center;
+
+}
+a{
+  color: white;
+  text-decoration: none;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
