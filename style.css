@@ -25,6 +25,7 @@ body {
   background-color: white;
   border-radius: 10px;
   margin-bottom: 5vh;
+  cursor: url(/images/pencil.png), auto;
 }
 
 .actions {
@@ -73,6 +74,10 @@ button {
   border: 2px solid aliceblue;
 }
 
+.color:hover {
+  box-shadow: 5px 6px 5px  white ;
+}
+
 #tipScale {
   display: flex;
   justify-content: space-between;
@@ -87,7 +92,9 @@ button {
   cursor: pointer;
   border: 2px solid aliceblue;
 }
-
+#point:hover {
+  box-shadow: 4px 3px 3px  white ;
+}
 .tip1px {
   height: 8px;
   width: 8px;
@@ -118,13 +125,12 @@ button {
   width: 20px;
   border-radius: 10px;
 }
-footer{
+footer {
   margin-top: 5vh;
   display: flex;
   text-align: center;
-
 }
-a{
+a {
   color: white;
   text-decoration: none;
   margin-left: 10vw;
